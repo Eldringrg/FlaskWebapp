@@ -1,5 +1,7 @@
 from flask import Flask,render_template,request
 
+from model2 import myfunc1
+
 app=Flask(__name__)
 
 @app.route('/')
@@ -12,7 +14,8 @@ def home():
 def summary():
   if request.method=='POST':
    summarize=request.form['message']
-   return render_template('summary.html',res= summarize)
+   res = myfunc1(summarize)
+   return render_template('summary.html',res= res)
    
 if __name__=="__main__":
   app.run(debug=True)
